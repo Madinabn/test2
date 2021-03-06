@@ -23,7 +23,7 @@ type Book struct {
 	IDBook   int
 	Title    string
 	Author   string
-	Student  Student
+	Students []Student
 	Headings []Heading
 }
 
@@ -32,109 +32,151 @@ type Heading struct {
 	Description string
 }
 
-var students = []Student{
-	{
-		ID:      1,
-		Name:    "Mario",
-		Year:    3,
-		Faculty: "Fit",
-		Date:    "21.02.2021",
-	},
-	{
-		ID:      2,
-		Name:    "Beka",
-		Year:    4,
-		Faculty: "PMI",
-		Date:    "12.02.2021",
-	},
-	{
-		ID:      3,
-		Name:    "Jasmin",
-		Year:    2,
-		Faculty: "ItU",
-		Date:    "20.02.2021",
-	},
-	{
-		ID:      4,
-		Name:    "Saiko",
-		Year:    1,
-		Faculty: "Bi",
-		Date:    "01.03.2021",
-	},
-	{
-		ID:      5,
-		Name:    "Berk",
-		Year:    2,
-		Faculty: "PMI",
-		Date:    "28.02.2021",
-	},
-}
-var headings = []Heading{
-	{
-		Description: "something1",
-	},
-	{
-		Description: "something2",
-	},
-	{
-		Description: "something3",
-	},
-	{
-		Description: "something4",
-	},
-	{
-		Description: "something5",
-	},
-	{
-		Description: "something6",
-	},
-	{
-		Description: "something7",
-	},
-	{
-		Description: "something8",
-	},
-}
 var books = []Book{
 	{
 		IDBook: 1,
 		Title:  "Winnie the Pooh",
 		Author: "A.A.Milne",
+		Headings: []Heading{
+			{
+				Description: "Hello",
+			},
+		},
+		Students: []Student{
+			{
+				ID:      5,
+				Name:    "Berk",
+				Year:    2,
+				Faculty: "PMI",
+				Date:    "28.02.2021",
+			},
+		},
 	},
 	{
 		IDBook: 2,
 		Title:  "Harry Potter",
 		Author: "J.K.Rowling",
+		Headings: []Heading{
+			{
+				Description: "Hello Madi",
+			},
+		},
+		Students: []Student{
+			{
+				ID:      5,
+				Name:    "Berk",
+				Year:    2,
+				Faculty: "PMI",
+				Date:    "28.02.2021",
+			},
+		},
 	},
+
 	{
 		IDBook: 3,
 		Title:  "Aiport",
 		Author: "A.A.Hailey",
+		Headings: []Heading{
+			{
+				Description: "Hello Zhas",
+			},
+		},
 	},
+
 	{
 		IDBook: 4,
 		Title:  "Jeeves and Woosters stories",
 		Author: "P.G.Wodehouse",
+		Headings: []Heading{
+			{
+				Description: "Hello",
+			},
+		},
+		Students: []Student{
+			{
+				ID:      5,
+				Name:    "Berk",
+				Year:    2,
+				Faculty: "PMI",
+				Date:    "28.02.2021",
+			},
+		},
 	},
 	{
 		IDBook: 5,
 		Title:  "The Adventures Of Sherlock Holmes",
 		Author: "A.C.Doyle",
+		Headings: []Heading{
+			{
+				Description: "Hello Saikal",
+			},
+		},
+		Students: []Student{
+			{
+				ID:      5,
+				Name:    "Berk",
+				Year:    2,
+				Faculty: "PMI",
+				Date:    "28.02.2021",
+			},
+		},
 	},
 	{
 		IDBook: 6,
 		Title:  "Jane Eyre",
 		Author: "C.Bronte",
+		Headings: []Heading{
+			{
+				Description: "Hello everyone",
+			},
+		},
+		Students: []Student{
+			{
+				ID:      5,
+				Name:    "Berk",
+				Year:    2,
+				Faculty: "PMI",
+				Date:    "28.02.2021",
+			},
+		},
 	},
 	{
 		IDBook: 7,
 		Title:  "Bridget Jones' Diary",
 		Author: "H.Fielding",
+		Headings: []Heading{
+			{
+				Description: "Hello hi",
+			},
+		},
+		Students: []Student{
+			{
+				ID:      5,
+				Name:    "Berk",
+				Year:    2,
+				Faculty: "PMI",
+				Date:    "28.02.2021",
+			},
+		},
 	},
 	{
 		IDBook: 8,
 		Title:  "To Kill Mockingbird",
 		Author: "H.Lee",
+		Headings: []Heading{
+			{
+				Description: "Hello me",
+			},
+		},
+		Students: []Student{
+			{
+				ID:      5,
+				Name:    "Berk",
+				Year:    2,
+				Faculty: "PMI",
+				Date:    "28.02.2021",
+			},
+		},
 	},
 }
 var bookType = graphql.NewObject(
@@ -259,7 +301,7 @@ func main() {
 
 	})
 
-	fmt.Println("Server is running on port 8091")
-	http.ListenAndServe(":8091", nil)
+	fmt.Println("Server is running on port 8082")
+	http.ListenAndServe(":8082", nil)
 
 }
