@@ -23,29 +23,19 @@ type Book struct {
 	Title    string
 	Author   string
 	Students []Student
-	Headings []Heading
 }
 
 //Heading contains information about heading
-type Heading struct {
-	Description string
-	Price       string
-}
 
 var books = []Book{
 	{
 		IDBook: 1,
 		Title:  "Winnie the Pooh",
 		Author: "A.A.Milne",
-		Headings: []Heading{
-			{
-				Description: "Hello",
-				Price:       "299",
-			},
-		},
+
 		Students: []Student{
 			{
-				ID:      5,
+				ID:      326482,
 				Name:    "Berk",
 				Year:    2,
 				Faculty: "PMI",
@@ -57,19 +47,14 @@ var books = []Book{
 		IDBook: 2,
 		Title:  "Harry Potter",
 		Author: "J.K.Rowling",
-		Headings: []Heading{
-			{
-				Description: "Hello Madi",
-				Price:       "299",
-			},
-		},
+
 		Students: []Student{
 			{
-				ID:      5,
-				Name:    "Berk",
-				Year:    2,
-				Faculty: "PMI",
-				Date:    "28.02.2021",
+				ID:      293874,
+				Name:    "Beka",
+				Year:    4,
+				Faculty: "ITU",
+				Date:    "20.02.2021",
 			},
 		},
 	},
@@ -78,10 +63,13 @@ var books = []Book{
 		IDBook: 3,
 		Title:  "Aiport",
 		Author: "A.A.Hailey",
-		Headings: []Heading{
+		Students: []Student{
 			{
-				Description: "Hello Zhas",
-				Price:       "299",
+				ID:      239084,
+				Name:    "Kelly",
+				Year:    1,
+				Faculty: "PI",
+				Date:    "10.02.2021",
 			},
 		},
 	},
@@ -90,19 +78,13 @@ var books = []Book{
 		IDBook: 4,
 		Title:  "Jeeves and Woosters stories",
 		Author: "P.G.Wodehouse",
-		Headings: []Heading{
-			{
-				Description: "Hello",
-				Price:       "299",
-			},
-		},
 		Students: []Student{
 			{
-				ID:      5,
-				Name:    "Berk",
-				Year:    2,
-				Faculty: "PMI",
-				Date:    "28.02.2021",
+				ID:      438750,
+				Name:    "Olga",
+				Year:    5,
+				Faculty: "UTS",
+				Date:    "29.01.2021",
 			},
 		},
 	},
@@ -110,19 +92,13 @@ var books = []Book{
 		IDBook: 5,
 		Title:  "The Adventures Of Sherlock Holmes",
 		Author: "A.C.Doyle",
-		Headings: []Heading{
-			{
-				Description: "Hello Saikal",
-				Price:       "299",
-			},
-		},
 		Students: []Student{
 			{
-				ID:      5,
-				Name:    "Berk",
-				Year:    2,
-				Faculty: "PMI",
-				Date:    "28.02.2021",
+				ID:      34875,
+				Name:    "Zhasmin",
+				Year:    3,
+				Faculty: "IB",
+				Date:    "01.03.2021",
 			},
 		},
 	},
@@ -130,19 +106,13 @@ var books = []Book{
 		IDBook: 6,
 		Title:  "Jane Eyre",
 		Author: "C.Bronte",
-		Headings: []Heading{
-			{
-				Description: "Hello everyone",
-				Price:       "299",
-			},
-		},
 		Students: []Student{
 			{
-				ID:      5,
-				Name:    "Berk",
-				Year:    2,
+				ID:      748003,
+				Name:    "Bikka",
+				Year:    1,
 				Faculty: "PMI",
-				Date:    "28.02.2021",
+				Date:    "03.03.2021",
 			},
 		},
 	},
@@ -150,19 +120,13 @@ var books = []Book{
 		IDBook: 7,
 		Title:  "Bridget Jones' Diary",
 		Author: "H.Fielding",
-		Headings: []Heading{
-			{
-				Description: "Hello hi",
-				Price:       "299",
-			},
-		},
 		Students: []Student{
 			{
-				ID:      5,
-				Name:    "Berk",
-				Year:    2,
-				Faculty: "PMI",
-				Date:    "28.02.2021",
+				ID:      38743,
+				Name:    "Saiko",
+				Year:    4,
+				Faculty: "BI",
+				Date:    "14.02.2021",
 			},
 		},
 	},
@@ -170,19 +134,13 @@ var books = []Book{
 		IDBook: 8,
 		Title:  "To Kill Mockingbird",
 		Author: "H.Lee",
-		Headings: []Heading{
-			{
-				Description: "Hello me",
-				Price:       "299",
-			},
-		},
 		Students: []Student{
 			{
-				ID:      5,
-				Name:    "Berk",
-				Year:    2,
-				Faculty: "PMI",
-				Date:    "28.02.2021",
+				ID:      37433,
+				Name:    "Jonas",
+				Year:    5,
+				Faculty: "PI",
+				Date:    "15.02.2021",
 			},
 		},
 	},
@@ -202,9 +160,6 @@ var bookType = graphql.NewObject(
 			},
 			"students": &graphql.Field{
 				Type: graphql.NewList(studentType),
-			},
-			"headings": &graphql.Field{
-				Type: graphql.NewList(headingType),
 			},
 		},
 	},
@@ -232,26 +187,12 @@ var studentType = graphql.NewObject(
 	},
 )
 
-var headingType = graphql.NewObject(
-	graphql.ObjectConfig{
-		Name: "Headings",
-		Fields: graphql.Fields{
-			"description": &graphql.Field{
-				Type: graphql.String,
-			},
-			"price": &graphql.Field{
-				Type: graphql.String,
-			},
-		},
-	},
-)
-
 var queryType = graphql.NewObject(
 	graphql.ObjectConfig{
 		Name: "Query",
 		Fields: graphql.Fields{
-
-			"Book": &graphql.Field{
+			//http://localhost:8092/book?query={book(idbook:2){title,author,students{id,name}}}
+			"book": &graphql.Field{
 				Type:        bookType,
 				Description: "Get Book by IDBook",
 				Args: graphql.FieldConfigArgument{
@@ -260,7 +201,7 @@ var queryType = graphql.NewObject(
 					},
 				},
 				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-					id, ok := p.Args["id"].(int)
+					id, ok := p.Args["idbook"].(int)
 					if ok {
 						// Find book
 						for _, book := range books {
@@ -272,7 +213,7 @@ var queryType = graphql.NewObject(
 					return nil, nil
 				},
 			},
-
+			//http://localhost:8092/book?query={list{idbook,title,author,students{id,name,faculty,date,year}}}
 			"list": &graphql.Field{
 				Type:        graphql.NewList(bookType),
 				Description: "Get Full book list",
@@ -309,7 +250,7 @@ func main() {
 
 	})
 
-	fmt.Println("Server is running on port 8087")
-	http.ListenAndServe(":8087", nil)
+	fmt.Println("Server is running on port 8092")
+	http.ListenAndServe(":8092", nil)
 
 }
