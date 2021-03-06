@@ -15,7 +15,6 @@ type Student struct {
 	Year    int
 	Faculty string
 	Date    string
-	Books   []int
 }
 
 //Book contains information about book
@@ -30,30 +29,9 @@ type Book struct {
 //Heading contains information about heading
 type Heading struct {
 	Description string
+	Price       string
 }
 
-var students = []Student{
-	{
-		ID:      1,
-		Name:    "Mario",
-		Year:    3,
-		Faculty: "Fit",
-		Date:    "21.02.2021",
-	},
-	{
-		ID:      2,
-		Name:    "Beka",
-		Year:    4,
-		Faculty: "PMI",
-		Date:    "12.02.2021",
-	},
-	{
-		ID:      3,
-		Name:    "Jasmin",
-		Year:    2,
-		Faculty: "ItU",
-		Date:    "20.02.2021",
-	},
 var books = []Book{
 	{
 		IDBook: 1,
@@ -62,6 +40,7 @@ var books = []Book{
 		Headings: []Heading{
 			{
 				Description: "Hello",
+				Price:       "299",
 			},
 		},
 		Students: []Student{
@@ -81,6 +60,7 @@ var books = []Book{
 		Headings: []Heading{
 			{
 				Description: "Hello Madi",
+				Price:       "299",
 			},
 		},
 		Students: []Student{
@@ -101,6 +81,7 @@ var books = []Book{
 		Headings: []Heading{
 			{
 				Description: "Hello Zhas",
+				Price:       "299",
 			},
 		},
 	},
@@ -112,6 +93,7 @@ var books = []Book{
 		Headings: []Heading{
 			{
 				Description: "Hello",
+				Price:       "299",
 			},
 		},
 		Students: []Student{
@@ -131,6 +113,7 @@ var books = []Book{
 		Headings: []Heading{
 			{
 				Description: "Hello Saikal",
+				Price:       "299",
 			},
 		},
 		Students: []Student{
@@ -150,6 +133,7 @@ var books = []Book{
 		Headings: []Heading{
 			{
 				Description: "Hello everyone",
+				Price:       "299",
 			},
 		},
 		Students: []Student{
@@ -169,6 +153,7 @@ var books = []Book{
 		Headings: []Heading{
 			{
 				Description: "Hello hi",
+				Price:       "299",
 			},
 		},
 		Students: []Student{
@@ -188,6 +173,7 @@ var books = []Book{
 		Headings: []Heading{
 			{
 				Description: "Hello me",
+				Price:       "299",
 			},
 		},
 		Students: []Student{
@@ -214,8 +200,8 @@ var bookType = graphql.NewObject(
 			"author": &graphql.Field{
 				Type: graphql.String,
 			},
-			"student": &graphql.Field{
-				Type: studentType,
+			"students": &graphql.Field{
+				Type: graphql.NewList(studentType),
 			},
 			"headings": &graphql.Field{
 				Type: graphql.NewList(headingType),
@@ -227,7 +213,7 @@ var studentType = graphql.NewObject(
 	graphql.ObjectConfig{
 		Name: "Student",
 		Fields: graphql.Fields{
-			"idst": &graphql.Field{
+			"id": &graphql.Field{
 				Type: graphql.Int,
 			},
 			"name": &graphql.Field{
@@ -242,18 +228,18 @@ var studentType = graphql.NewObject(
 			"date": &graphql.Field{
 				Type: graphql.String,
 			},
-			"books": &graphql.Field{
-				Type: graphql.NewList(graphql.Int),
-			},
 		},
 	},
 )
 
 var headingType = graphql.NewObject(
 	graphql.ObjectConfig{
-		Name: "Heading",
+		Name: "Headings",
 		Fields: graphql.Fields{
 			"description": &graphql.Field{
+				Type: graphql.String,
+			},
+			"price": &graphql.Field{
 				Type: graphql.String,
 			},
 		},
@@ -323,7 +309,7 @@ func main() {
 
 	})
 
-	fmt.Println("Server is running on port 8082")
-	http.ListenAndServe(":8082", nil)
+	fmt.Println("Server is running on port 8087")
+	http.ListenAndServe(":8087", nil)
 
 }
