@@ -32,6 +32,28 @@ type Heading struct {
 	Description string
 }
 
+var students = []Student{
+	{
+		ID:      1,
+		Name:    "Mario",
+		Year:    3,
+		Faculty: "Fit",
+		Date:    "21.02.2021",
+	},
+	{
+		ID:      2,
+		Name:    "Beka",
+		Year:    4,
+		Faculty: "PMI",
+		Date:    "12.02.2021",
+	},
+	{
+		ID:      3,
+		Name:    "Jasmin",
+		Year:    2,
+		Faculty: "ItU",
+		Date:    "20.02.2021",
+	},
 var books = []Book{
 	{
 		IDBook: 1,
